@@ -76,9 +76,10 @@ export default function BeforeAfter() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] as const }}
-              className="lg:col-span-7 flex flex-col group"
+              className="lg:col-span-7 flex flex-col group relative"
             >
-              <div className="flex w-full aspect-[4/3] md:aspect-[16/9] lg:aspect-[4/3] bg-clinic-bg mb-6 relative overflow-hidden">
+              <div className="flex w-full aspect-[4/3] md:aspect-[16/9] lg:aspect-[4/3] bg-clinic-bg mb-6 relative overflow-hidden [clip-path:polygon(0_0,100%_0,100%_calc(100%-24px),calc(100%-24px)_100%,0_100%)]">
+                <div className="absolute top-0 right-0 w-[24px] h-[24px] bg-clinic-stone/20 [clip-path:polygon(100%_0,100%_100%,0_100%)] z-10" />
                 <div className="w-1/2 relative border-r border-white/20">
                   <Image src={featuredCase.imgBefore} alt="До" fill className="object-cover group-hover:scale-105 transition-transform duration-1000" />
                   <span className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 text-[10px] uppercase tracking-[0.2em] font-medium text-clinic-dark">До</span>

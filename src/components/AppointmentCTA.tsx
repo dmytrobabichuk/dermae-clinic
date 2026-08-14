@@ -30,10 +30,13 @@ export default function AppointmentCTA() {
 
           <a
             href="#contact"
-            className="inline-flex items-center gap-2.5 bg-white text-clinic-dark rounded-xl px-10 py-4 text-sm tracking-wide font-medium hover:bg-clinic-sage-light hover:text-white transition-all duration-300 mt-10 shadow-lg hover:shadow-xl"
+            className="group inline-flex items-center gap-2.5 bg-white text-clinic-dark px-10 py-4 text-sm tracking-wide font-medium hover:bg-clinic-sage-light hover:text-white transition-all duration-300 mt-10 shadow-lg hover:shadow-xl relative [clip-path:polygon(0_0,100%_0,100%_calc(100%-14px),calc(100%-14px)_100%,0_100%)] overflow-hidden"
           >
-            Записатись на прийом
-            <ArrowRight className="w-4 h-4" />
+            <span className="relative z-10 flex items-center gap-2.5">
+              Записатись на прийом
+              <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            </span>
+            <div className="absolute top-0 right-0 w-[16px] h-[16px] bg-clinic-dark/5 [clip-path:polygon(100%_0,100%_100%,0_100%)] group-hover:bg-black/10 transition-colors" />
           </a>
 
           <p className="text-white/35 text-[0.65rem] tracking-[0.06em] mt-5">

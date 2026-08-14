@@ -67,11 +67,14 @@ export default function Services() {
                   idx % 2 !== 0 ? 'sm:ml-12 lg:ml-24' : ''
                 }`}
               >
-                <div className="text-clinic-sage/30 font-serif text-5xl md:text-6xl font-light leading-none group-hover:text-clinic-sage transition-colors duration-500">
+                {/* Diagonal reveal on hover */}
+                <div className="absolute left-0 top-6 w-0 h-[1px] bg-clinic-sage/40 -rotate-45 origin-left group-hover:w-8 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] opacity-0 group-hover:opacity-100 pointer-events-none hidden sm:block" />
+                
+                <div className="text-clinic-sage/30 font-serif text-5xl md:text-6xl font-light leading-none group-hover:text-clinic-sage group-hover:-translate-y-1 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
                   {service.num}
                 </div>
                 <div className="flex-1 mt-1 sm:mt-2">
-                  <h3 className="font-serif text-xl md:text-2xl text-clinic-dark mb-4 group-hover:translate-x-2 transition-transform duration-500 ease-[0.16,1,0.3,1]">
+                  <h3 className="font-serif text-xl md:text-2xl text-clinic-dark mb-4 group-hover:translate-x-2 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]">
                     {service.title}
                   </h3>
                   <p className="text-clinic-muted text-sm leading-[1.8] font-light max-w-md">

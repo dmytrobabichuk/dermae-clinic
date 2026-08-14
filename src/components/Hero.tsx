@@ -49,8 +49,9 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
         >
-          <motion.div variants={itemVariants}>
-            <span className="inline-block text-clinic-sage text-[0.65rem] tracking-[0.2em] uppercase font-sans font-medium mb-10 border-b border-clinic-sage/30 pb-2">
+          <motion.div variants={itemVariants} className="relative mb-10">
+            <div className="absolute -left-6 top-1/2 -translate-y-1/2 w-4 h-[1px] bg-clinic-sage/40 -rotate-45" />
+            <span className="inline-block text-clinic-sage text-[0.65rem] tracking-[0.2em] uppercase font-sans font-medium border-b border-clinic-sage/20 pb-2">
               Приватна дерматологічна клініка
             </span>
           </motion.div>
@@ -85,10 +86,13 @@ export default function Hero() {
           <motion.div variants={itemVariants} className="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-6">
             <a
               href="#contact"
-              className="group inline-flex items-center justify-center gap-3 bg-clinic-dark text-white rounded-none px-8 py-4 text-[0.75rem] tracking-[0.1em] uppercase font-medium hover:bg-clinic-sage transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinic-sage focus-visible:ring-offset-2"
+              className="group inline-flex items-center justify-center gap-3 bg-clinic-dark text-white px-8 py-4 text-[0.75rem] tracking-[0.1em] uppercase font-medium hover:bg-clinic-sage transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinic-sage focus-visible:ring-offset-2 relative [clip-path:polygon(0_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%)]"
             >
-              Записатись на прийом
-              <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" />
+              <span className="relative z-10 flex items-center gap-3">
+                Записатись на прийом
+                <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" />
+              </span>
+              <div className="absolute top-0 right-0 w-[16px] h-[16px] bg-white/10 [clip-path:polygon(100%_0,100%_100%,0_100%)] group-hover:bg-white/20 transition-colors" />
             </a>
             <a
               href="#services"
@@ -119,6 +123,7 @@ export default function Hero() {
                 sizes="(max-width: 1024px) 100vw, 42vw"
               />
               <div className="absolute inset-0 bg-black/5 mix-blend-overlay pointer-events-none" />
+              <div className="absolute inset-0 border border-clinic-dark/5 pointer-events-none" />
             </motion.div>
           </motion.div>
 
@@ -127,9 +132,10 @@ export default function Hero() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1, duration: 1, ease: [0.16, 1, 0.3, 1] as const }}
-            className="absolute bottom-8 -left-4 sm:left-4 lg:-left-12 bg-white/90 backdrop-blur-md p-4 lg:p-6 max-w-[200px]"
+            className="absolute bottom-6 -left-4 sm:left-4 lg:-left-12 bg-white/95 backdrop-blur-md p-5 lg:p-6 max-w-[200px] shadow-2xl shadow-clinic-dark/5 [clip-path:polygon(0_0,100%_0,100%_calc(100%-14px),calc(100%-14px)_100%,0_100%)] border border-clinic-stone/30"
           >
-            <span className="block w-4 h-px bg-clinic-sage mb-3" />
+            <div className="absolute top-0 right-0 w-[18px] h-[18px] bg-clinic-sage/5 [clip-path:polygon(100%_0,100%_100%,0_100%)]" />
+            <span className="block w-4 h-[1px] bg-clinic-sage mb-3" />
             <span className="text-[0.65rem] tracking-[0.15em] uppercase text-clinic-dark font-medium block leading-relaxed">
               Медичний директор
             </span>

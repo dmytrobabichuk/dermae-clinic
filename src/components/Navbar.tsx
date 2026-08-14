@@ -52,17 +52,17 @@ export default function Navbar() {
     <>
       {/* ─── Scroll Progress Bar ─── */}
       <motion.div
-        className="fixed top-0 left-0 right-0 h-[2px] bg-clinic-sage origin-left z-[60]"
+        className="fixed top-0 left-0 right-0 h-[1.5px] bg-clinic-sage origin-left z-[60] pointer-events-none"
         style={{ scaleX }}
       />
 
-      <header className="sticky top-0 z-40 w-full">
+      <header className="sticky top-0 z-40 w-full transition-colors duration-500">
         {/* ─── Main Navigation ─── */}
         <div
           className={`transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] w-full ${
             isScrolled
-              ? 'bg-white/90 backdrop-blur-xl shadow-[0_1px_24px_rgba(0,0,0,0.04)] border-b border-clinic-stone/50 py-3.5'
-              : 'bg-clinic-bg/95 backdrop-blur-sm py-5 border-b border-transparent'
+              ? 'bg-white/95 backdrop-blur-md shadow-[0_1px_16px_rgba(0,0,0,0.03)] border-b border-clinic-stone/40 py-4'
+              : 'bg-clinic-bg/90 backdrop-blur-sm py-6 border-b border-transparent'
           }`}
         >
           <div className="max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
@@ -95,136 +95,122 @@ export default function Navbar() {
             {/* Desktop CTA */}
             <a
               href="#contact"
-              className="hidden lg:inline-flex bg-clinic-dark text-white rounded-xl px-7 py-2.5 text-[0.7rem] tracking-[0.08em] uppercase font-medium hover:bg-clinic-sage transition-all duration-400 shadow-sm hover:shadow-md shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinic-sage focus-visible:ring-offset-4"
+              className="hidden lg:inline-flex bg-clinic-dark text-white px-7 py-2.5 text-[0.7rem] tracking-[0.08em] uppercase font-medium hover:bg-clinic-sage transition-all duration-400 shadow-sm shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinic-sage focus-visible:ring-offset-4 relative [clip-path:polygon(0_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%)] group overflow-hidden"
             >
-              Записатись на прийом
+              <span className="relative z-10">Записатись на прийом</span>
+              <div className="absolute top-0 right-0 w-[12px] h-[12px] bg-white/10 [clip-path:polygon(100%_0,100%_100%,0_100%)] group-hover:bg-white/20 transition-colors" />
             </a>
 
             {/* Mobile: Hamburger only */}
             <button
-              className="lg:hidden relative w-10 h-10 flex items-center justify-center text-clinic-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinic-sage rounded-md z-50"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+              className="lg:hidden relative w-10 h-10 flex items-center justify-center text-clinic-dark focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinic-sage rounded-md z-40"
+              onClick={() => setIsMobileMenuOpen(true)}
               aria-expanded={isMobileMenuOpen}
-              aria-label={isMobileMenuOpen ? 'Закрити меню' : 'Відкрити меню'}
+              aria-label="Відкрити меню"
             >
-              <AnimatePresence mode="wait" initial={false}>
-                {isMobileMenuOpen ? (
-                  <motion.div
-                    key="close"
-                    initial={{ opacity: 0, rotate: -90 }}
-                    animate={{ opacity: 1, rotate: 0 }}
-                    exit={{ opacity: 0, rotate: 90 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <X size={26} strokeWidth={1.5} />
-                  </motion.div>
-                ) : (
-                  <motion.div
-                    key="menu"
-                    initial={{ opacity: 0, rotate: 90 }}
-                    animate={{ opacity: 1, rotate: 0 }}
-                    exit={{ opacity: 0, rotate: -90 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Menu size={26} strokeWidth={1.5} />
-                  </motion.div>
-                )}
-              </AnimatePresence>
+              <Menu size={26} strokeWidth={1.5} />
             </button>
           </div>
         </div>
+      </header>
 
-        {/* ─── Mobile Full-Screen Overlay ─── */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
+      {/* ─── Mobile Full-Screen Overlay ─── */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed inset-0 h-screen w-screen z-[70] lg:hidden overflow-hidden"
+          >
+            {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="fixed inset-0 h-screen w-screen z-40 lg:hidden"
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="absolute inset-0 bg-white/95 backdrop-blur-2xl z-0"
+              aria-hidden="true"
+            />
+
+            {/* Close Button */}
+            <button
+              className="absolute top-6 right-6 w-12 h-12 flex items-center justify-center text-clinic-dark z-20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinic-sage rounded-md"
+              onClick={() => setIsMobileMenuOpen(false)}
+              aria-label="Закрити меню"
             >
-              {/* Backdrop */}
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="absolute inset-0 bg-white/95 backdrop-blur-2xl"
-              />
+              <X size={28} strokeWidth={1.2} />
+            </button>
 
-              {/* Content */}
-              <div className="relative z-10 flex flex-col h-full pt-32 pb-10 px-8 pointer-events-none">
-                {/* Nav Links — centered */}
-                <nav className="flex-1 flex flex-col items-center justify-center gap-2 pointer-events-auto">
-                  {navLinks.map((link, i) => (
-                    <motion.div
-                      key={link.name}
-                      initial={{ opacity: 0, y: 16 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -8 }}
-                      transition={{ delay: 0.06 * i, duration: 0.4, ease: [0.16, 1, 0.3, 1] as const }}
-                    >
-                      <Link
-                        href={link.href}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className="block py-4 font-serif text-2xl tracking-[0.02em] text-clinic-dark hover:text-clinic-sage transition-colors duration-200 text-center"
-                      >
-                        {link.name}
-                      </Link>
-                    </motion.div>
-                  ))}
-
-                  {/* CTA in mobile menu */}
+            {/* Content */}
+            <div className="relative z-10 flex flex-col h-full pt-32 pb-safe-bottom px-8 pointer-events-none">
+              {/* Nav Links — centered */}
+              <nav className="flex-1 flex flex-col items-center justify-center gap-2 pointer-events-auto">
+                {navLinks.map((link, i) => (
                   <motion.div
+                    key={link.name}
                     initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -8 }}
-                    transition={{ delay: 0.06 * navLinks.length, duration: 0.4 }}
-                    className="mt-8"
+                    transition={{ delay: 0.06 * i, duration: 0.4, ease: [0.16, 1, 0.3, 1] as const }}
                   >
-                    <a
-                      href="#contact"
+                    <Link
+                      href={link.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="inline-flex bg-clinic-dark text-white rounded-xl px-10 py-4 text-sm tracking-wide font-medium shadow-xl shadow-clinic-dark/10"
+                      className="block py-4 font-serif text-[1.65rem] tracking-[0.02em] text-clinic-dark hover:text-clinic-sage transition-colors duration-200 text-center"
                     >
-                      Записатись на прийом
-                    </a>
+                      {link.name}
+                    </Link>
                   </motion.div>
-                </nav>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </header>
+                ))}
+
+                {/* CTA in mobile menu */}
+                <motion.div
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ delay: 0.06 * navLinks.length, duration: 0.4 }}
+                  className="mt-10"
+                >
+                  <a
+                    href="#contact"
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="inline-flex bg-clinic-dark text-white px-10 py-4 text-[0.8rem] tracking-wide font-medium shadow-xl shadow-clinic-dark/5 relative [clip-path:polygon(0_0,100%_0,100%_calc(100%-8px),calc(100%-8px)_100%,0_100%)]"
+                  >
+                    Записатись на прийом
+                  </a>
+                </motion.div>
+              </nav>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
       {/* ─── Floating CTA (Appears on Scroll) ─── */}
       <AnimatePresence>
-        {isScrolled && (
-          <motion.a
-            href="#contact"
-            initial={{ opacity: 0, y: 20, scale: 0.9 }}
+        {isScrolled && !isMobileMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.9 }}
+            exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] as const }}
-            className="fixed bottom-6 right-6 z-50 bg-clinic-dark text-white rounded-2xl px-6 py-3.5 text-[0.75rem] tracking-[0.08em] uppercase font-medium hover:bg-clinic-sage transition-colors duration-300 shadow-2xl flex items-center gap-2 lg:hidden"
+            className="fixed bottom-6 right-6 lg:bottom-8 lg:right-8 z-50 pointer-events-none"
           >
-            Записатися
-          </motion.a>
-        )}
-      </AnimatePresence>
-      <AnimatePresence>
-        {isScrolled && (
-          <motion.a
-            href="#contact"
-            initial={{ opacity: 0, y: 20, scale: 0.9 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.9 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] as const }}
-            className="hidden lg:flex fixed bottom-8 right-8 z-50 bg-clinic-dark text-white rounded-2xl px-7 py-4 text-[0.75rem] tracking-[0.08em] uppercase font-medium hover:bg-clinic-sage transition-colors duration-300 shadow-2xl items-center gap-2 group"
-          >
-            Записатися на прийом
-          </motion.a>
+            <a
+              href="#contact"
+              className="pointer-events-auto group relative flex items-center justify-center gap-3 bg-[#F7F5F0] text-[#171918] px-6 py-3.5 lg:px-7 lg:py-4 text-[0.72rem] tracking-[0.12em] uppercase font-medium transition-all duration-400 hover:bg-[#8E9B8C] hover:text-white shadow-[0_12px_40px_rgba(0,0,0,0.35)] border border-[#171918]/10 hover:border-transparent [clip-path:polygon(0_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%)] overflow-hidden"
+            >
+              {/* Акцентний кутовий зріз 45° */}
+              <div className="absolute top-0 right-0 w-[14px] h-[14px] bg-[#171918]/10 group-hover:bg-white/20 transition-colors [clip-path:polygon(100%_0,100%_100%,0_100%)] pointer-events-none" />
+
+              <span className="relative z-10 hidden sm:inline-flex items-center gap-2">
+                Записатися на прийом
+                <span className="w-1.5 h-1.5 rounded-full bg-[#8E9B8C] group-hover:bg-white transition-colors" />
+              </span>
+              <span className="relative z-10 block sm:hidden">Записатися</span>
+            </a>
+          </motion.div>
         )}
       </AnimatePresence>
     </>

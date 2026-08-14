@@ -78,6 +78,11 @@ export default function DoctorProfile() {
                 полягає у тому, щоб прочитати її з точністю, емпатією та науковою доброчесністю.
               </p>
             </div>
+
+            {/* Subtle Diagonal Divider */}
+            <div className="w-full flex items-center justify-center my-8">
+              <div className="w-16 h-[1px] bg-clinic-stone/60 -rotate-45" />
+            </div>
             
             {/* Signature or subtle flourish */}
             <div className="mt-10 font-serif italic text-3xl text-clinic-muted/30 pointer-events-none">

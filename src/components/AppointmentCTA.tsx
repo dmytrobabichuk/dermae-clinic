@@ -5,8 +5,11 @@ import { ArrowRight } from 'lucide-react';
 
 export default function AppointmentCTA() {
   return (
-    <section id="contact" className="w-full bg-[#171918] text-white py-24 lg:py-32 scroll-mt-32">
-      <div className="max-w-4xl mx-auto px-6 flex flex-col items-center">
+    <section id="contact" className="w-full bg-[#171918] text-white py-24 lg:py-32 scroll-mt-32 relative overflow-hidden">
+      {/* Subtle ambient sage glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/3 w-[500px] h-[400px] bg-[#8E9B8C]/[0.03] rounded-full blur-[120px] pointer-events-none" aria-hidden="true" />
+
+      <div className="max-w-4xl mx-auto px-6 flex flex-col items-center relative">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -30,7 +33,7 @@ export default function AppointmentCTA() {
 
           <a
             href="#contact"
-            className="group inline-flex items-center gap-2.5 bg-white text-clinic-dark px-10 py-4 text-sm tracking-wide font-medium hover:bg-clinic-sage-light hover:text-white transition-all duration-300 mt-10 shadow-lg hover:shadow-xl relative [clip-path:polygon(0_0,100%_0,100%_calc(100%-14px),calc(100%-14px)_100%,0_100%)] overflow-hidden"
+            className="group inline-flex items-center gap-2.5 bg-white text-clinic-dark px-10 py-4 text-sm tracking-wide font-medium hover:bg-clinic-sage-light hover:text-white transition-all duration-300 mt-10 shadow-lg hover:shadow-[0_8px_32px_rgba(142,155,140,0.3)] relative [clip-path:polygon(0_0,100%_0,100%_calc(100%-14px),calc(100%-14px)_100%,0_100%)] overflow-hidden"
           >
             <span className="relative z-10 flex items-center gap-2.5">
               Записатись на прийом

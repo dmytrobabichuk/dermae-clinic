@@ -49,6 +49,21 @@ export default function Navbar() {
     };
   }, [isMobileMenuOpen]);
 
+  // Handle smooth scrolling for hash links
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith('#')) {
+      e.preventDefault();
+      const targetId = href.substring(1);
+      const elem = document.getElementById(targetId);
+      if (elem) {
+        elem.scrollIntoView({ behavior: 'smooth' });
+        // Update URL without reloading
+        window.history.pushState(null, '', href);
+        setIsMobileMenuOpen(false);
+      }
+    }
+  };
+
   return (
     <>
       {/* ─── Scroll Progress Bar ─── */}
@@ -82,6 +97,7 @@ export default function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
+                  onClick={(e) => handleSmoothScroll(e, link.href)}
                   className="relative font-sans text-[0.7rem] tracking-[0.1em] uppercase font-medium text-clinic-muted hover:text-clinic-dark transition-colors duration-300 after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[1px] after:bg-clinic-sage after:transition-all after:duration-300 hover:after:w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinic-sage focus-visible:ring-offset-4 rounded-sm"
                 >
                   {link.name}
@@ -154,7 +170,7 @@ export default function Navbar() {
                   >
                     <Link
                       href={link.href}
-                      onClick={() => setIsMobileMenuOpen(false)}
+                      onClick={(e) => handleSmoothScroll(e, link.href)}
                       className="block py-4 font-serif text-[1.65rem] tracking-[0.02em] text-clinic-dark hover:text-clinic-sage transition-colors duration-200 text-center"
                     >
                       {link.name}

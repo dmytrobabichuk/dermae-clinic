@@ -27,7 +27,10 @@ const services = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-24 lg:py-36 bg-white scroll-mt-32">
+    <section id="services" className="py-24 lg:py-36 bg-white scroll-mt-32 relative z-0 overflow-hidden">
+      {/* ─── Background Geometry ─── */}
+      <div className="absolute top-1/4 left-0 w-[20vw] h-[45vh] bg-[#E5E2DA]/40 [clip-path:polygon(0_0,100%_50%,0_100%)] -z-10 pointer-events-none" />
+      <div className="absolute bottom-10 right-0 w-[15vw] h-[30vh] bg-[#8E9B8C]/5 [clip-path:polygon(100%_0,100%_100%,0_50%)] -z-10 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
           

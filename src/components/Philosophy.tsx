@@ -23,7 +23,10 @@ const philosophyPoints = [
 export default function Philosophy() {
   return (
     <section id="about" className="w-full bg-[#171918] text-white py-28 lg:py-36 scroll-mt-32 relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col items-center text-center">
+      {/* Subtle ambient sage glow */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-[#8E9B8C]/[0.03] rounded-full blur-[150px] pointer-events-none" aria-hidden="true" />
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col items-center text-center relative">
 
         {/* Заголовок та цитата */}
         <motion.div

@@ -39,9 +39,16 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" className="w-full bg-clinic-bg pt-12 pb-24 lg:pt-24 lg:pb-36 scroll-mt-32 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col-reverse lg:flex-row items-center justify-between gap-16 lg:gap-8">
-        
+    <section id="hero" className="w-full bg-clinic-bg pt-12 pb-24 lg:pt-24 lg:pb-36 scroll-mt-32 overflow-hidden relative z-0">
+      {/* ─── Background Architectural Geometry ─── */}
+      <div className="absolute top-0 right-0 w-[45vw] h-full bg-[#E5E2DA]/30 [clip-path:polygon(100%_0,100%_100%,0_100%)] -z-10 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[35vw] h-[60vh] bg-[#8E9B8C]/10 [clip-path:polygon(0_0,0_100%,100%_100%)] -z-10 pointer-events-none" />
+
+      {/* ─── Subtle ambient sage glow behind the portrait area ─── */}
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-[#8E9B8C]/[0.04] rounded-full blur-[120px] pointer-events-none" aria-hidden="true" />
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col-reverse lg:flex-row items-center justify-between gap-16 lg:gap-8 relative">
+
         {/* ─── Left: Editorial Text ─── */}
         <motion.div
           className="w-full lg:w-[50%] flex flex-col items-start"
@@ -64,7 +71,7 @@ export default function Hero() {
             <br />
             дерматологія.
           </motion.h1>
-          
+
           <motion.h2
             variants={itemVariants}
             className="font-serif text-3xl md:text-4xl lg:text-[2.75rem] text-clinic-sage leading-[1.1] tracking-tight mt-2 italic"
@@ -86,7 +93,7 @@ export default function Hero() {
           <motion.div variants={itemVariants} className="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-6">
             <a
               href="#contact"
-              className="group inline-flex items-center justify-center gap-3 bg-clinic-dark text-white px-8 py-4 text-[0.75rem] tracking-[0.1em] uppercase font-medium hover:bg-clinic-sage transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinic-sage focus-visible:ring-offset-2 relative [clip-path:polygon(0_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%)]"
+              className="group inline-flex items-center justify-center gap-3 bg-clinic-dark text-white px-8 py-4 text-[0.75rem] tracking-[0.1em] uppercase font-medium hover:bg-clinic-sage transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinic-sage focus-visible:ring-offset-2 relative [clip-path:polygon(0_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%)] hover:shadow-[0_8px_32px_rgba(142,155,140,0.25)]"
             >
               <span className="relative z-10 flex items-center gap-3">
                 Записатись на прийом
@@ -109,7 +116,7 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
         >
-          <motion.div 
+          <motion.div
             variants={imageWrapVariants}
             className="relative w-[90%] sm:w-[80%] lg:w-full aspect-[3/4] overflow-hidden [clip-path:polygon(0_0,calc(100%-28px)_0,100%_28px,100%_100%,0_100%)]"
           >
@@ -130,7 +137,7 @@ export default function Hero() {
           </motion.div>
 
           {/* Minimal Floating Badge */}
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1, duration: 1, ease: [0.16, 1, 0.3, 1] as const }}

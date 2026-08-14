@@ -1,26 +1,108 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ─── Design Tokens ─── */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  --color-clinic-bg: #F7F5F0;
+  --color-clinic-dark: #171918;
+  --color-clinic-muted: #575A58;
+  --color-clinic-sage: #8E9B8C;
+  --color-clinic-sage-light: #A8B2A5;
+  --color-clinic-stone: #E5E2DA;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  --font-serif: "Playfair Display", Georgia, serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  --animate-fade-in: fade-in 0.8s ease-out both;
+  --animate-slide-up: slide-up 0.7s ease-out both;
+  --animate-gentle-pulse: gentle-pulse 3s ease-in-out infinite;
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slide-up {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes gentle-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
   }
 }
 
+/* ─── Smooth Scrolling ─── */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* ─── Base Body ─── */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background-color: var(--color-clinic-bg);
+  color: var(--color-clinic-dark);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+/* ─── Custom Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-clinic-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-clinic-sage-light);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-clinic-sage);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-clinic-sage-light) var(--color-clinic-bg);
+}
+
+/* ─── Typography Utilities ─── */
+.heading-editorial {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.body-refined {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+}
+
+.label-clinical {
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* ─── Selection ─── */
+::selection {
+  background-color: var(--color-clinic-sage-light);
+  color: var(--color-clinic-dark);
+}
+
+/* ─── Focus Outlines ─── */
+:focus-visible {
+  outline: 2px solid var(--color-clinic-sage);
+  outline-offset: 2px;
 }

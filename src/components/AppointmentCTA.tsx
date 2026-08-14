@@ -5,7 +5,7 @@ import { ArrowRight } from 'lucide-react';
 
 export default function AppointmentCTA() {
   return (
-    <section id="contact" className="w-full bg-clinic-dark text-white py-24 lg:py-32">
+    <section id="contact" className="w-full bg-clinic-dark text-white py-24 lg:py-32 scroll-mt-32">
       <div className="max-w-4xl mx-auto px-6 flex flex-col items-center">
         <motion.div
           initial={{ opacity: 0, y: 24 }}

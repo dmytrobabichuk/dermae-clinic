@@ -35,7 +35,7 @@ export default function Hero() {
   };
 
   return (
-    <section id="hero" className="w-full bg-clinic-bg pt-12 pb-20 lg:pt-20 lg:pb-32">
+    <section id="hero" className="w-full bg-clinic-bg pt-12 pb-20 lg:pt-20 lg:pb-32 scroll-mt-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 flex flex-col-reverse lg:flex-row items-center gap-14 lg:gap-16">
 
         {/* ─── Left: Editorial Text ─── */}

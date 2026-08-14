@@ -13,7 +13,7 @@ const credentials = [
 
 export default function DoctorProfile() {
   return (
-    <section id="doctor" className="bg-white border-y border-clinic-stone">
+    <section id="doctor" className="bg-white border-y border-clinic-stone scroll-mt-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-24 lg:py-32">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center lg:items-stretch">
 

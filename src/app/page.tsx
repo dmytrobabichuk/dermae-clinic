@@ -3,6 +3,7 @@ import Hero from "@/components/Hero";
 import TrustBar from "@/components/TrustBar";
 import Services from "@/components/Services";
 import DoctorProfile from "@/components/DoctorProfile";
+import Philosophy from "@/components/Philosophy";
 import BeforeAfter from "@/components/BeforeAfter";
 import Testimonials from "@/components/Testimonials";
 import AppointmentCTA from "@/components/AppointmentCTA";
@@ -15,7 +16,7 @@ export default function Home() {
       <main>
         <Hero />
         <TrustBar />
-        <section id="about" className="sr-only" aria-label="About anchor" />
+        <Philosophy />
         <Services />
         <DoctorProfile />
         <BeforeAfter />

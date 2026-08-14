@@ -1,116 +1,88 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Stethoscope, Microscope, Sparkles, HeartPulse } from 'lucide-react';
 
 const services = [
   {
-    index: '01',
+    num: '01',
     title: 'Клінічна дерматологія',
-    description:
-      'Системна діагностика та лікування повного спектру дерматологічних захворювань — від запальних дерматозів та автоімунних розладів до хронічної екземи та псоріазу. Кожен випадок починається з детального анамнезу та структурованого фізикального обстеження.',
-    icon: Stethoscope,
+    desc: 'Комплексна діагностика та лікування гострих та хронічних захворювань шкіри, включаючи акне, розацеа, екзему та псоріаз.',
   },
   {
-    index: '02',
-    title: 'Прецизійна дерматоскопія',
-    description:
-      'Неінвазивний аналіз новоутворень шкіри за допомогою поляризованої дерматоскопії високої роздільної здатності. Цифрове картування забезпечує тривале спостереження за атиповими невусами та раннє виявлення меланоцитарних змін з задокументованою точністю понад 98%.',
-    icon: Microscope,
+    num: '02',
+    title: 'Дерматоскопія та скринінг',
+    desc: 'Прецизійне цифрове картування родимок та раннє виявлення меланоми за допомогою оптичних технологій високої роздільної здатності.',
   },
   {
-    index: '03',
-    title: 'Лікування акне',
-    description:
-      'Мультифакторні протоколи лікування, спрямовані на гормональні, бактеріальні та запальні механізми акне. Наші програми інтегрують топічні ретиноїди, таргетну антибактеріальну терапію, хімічні пілінги та корекцію способу життя для досягнення стійкої ремісії.',
-    icon: Sparkles,
+    num: '03',
+    title: 'Дерматохірургія',
+    desc: 'Мікрографічні та ексцизійні методи видалення доброякісних та злоякісних утворень шкіри з мінімальним рубцюванням.',
   },
   {
-    index: '04',
-    title: 'Естетична реабілітація шкіри',
-    description:
-      'Процедури омолодження на основі доказової медицини: медичні хімічні пілінги, мікронідлінг з факторами росту та фототерапія. Усі протоколи клінічно валідовані та адаптовані до індивідуальної біології шкіри пацієнта.',
-    icon: HeartPulse,
+    num: '04',
+    title: 'Естетична медицина',
+    desc: 'Доказові антивікові протоколи, включаючи лазерну терапію, ін\u0027єкційні методики та лікування рубців і гіперпігментації.',
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.12,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 28 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.7,
-      ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
-    },
-  },
-};
-
 export default function Services() {
   return (
-    <section id="services" className="py-24 lg:py-32 bg-clinic-bg scroll-mt-32">
+    <section id="services" className="py-24 lg:py-36 bg-white scroll-mt-32">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
-          transition={{ duration: 0.7 }}
-          className="mb-16"
-        >
-          <span className="text-clinic-sage uppercase tracking-[0.15em] text-[0.65rem] font-semibold font-sans">
-            Клінічні спеціалізації
-          </span>
-          <h2 className="font-serif text-3xl md:text-4xl text-clinic-dark mt-4 max-w-2xl leading-tight tracking-tight">
-            Комплексна діагностична та терапевтична дерматологія
-          </h2>
-        </motion.div>
+        <div className="flex flex-col lg:flex-row gap-16 lg:gap-24">
+          
+          {/* Header Area */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
+            className="w-full lg:w-[35%] shrink-0"
+          >
+            <div className="sticky top-40">
+              <span className="uppercase tracking-[0.2em] text-[0.65rem] font-medium text-clinic-sage font-sans mb-6 block">
+                Спеціалізація
+              </span>
+              <h2 className="font-serif text-3xl md:text-4xl text-clinic-dark leading-[1.15] tracking-tight mb-6">
+                Комплексний підхід до здоров&#39;я шкіри
+              </h2>
+              <p className="text-clinic-muted text-[0.95rem] leading-[1.8] font-light max-w-sm">
+                Кожна дисципліна у нашій клініці спирається на найвищі стандарти
+                доказової медицини. Ми не пропонуємо шаблонів — лише точні,
+                науково обґрунтовані рішення.
+              </p>
+            </div>
+          </motion.div>
 
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-6"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: '-100px' }}
-        >
-          {services.map((service) => {
-            const Icon = service.icon;
-            return (
+          {/* Asymmetric List Area */}
+          <div className="w-full lg:w-[65%] flex flex-col gap-12 lg:gap-16 pt-8 lg:pt-0">
+            {services.map((service, idx) => (
               <motion.div
-                key={service.index}
-                variants={itemVariants}
-                className="group relative bg-white border border-clinic-stone/70 rounded-2xl p-8 lg:p-10 overflow-hidden transition-all duration-500 hover:border-clinic-sage/30 hover:shadow-[0_8px_40px_-12px_rgba(142,155,140,0.18)] cursor-default"
+                key={service.num}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{ duration: 0.9, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] as const }}
+                className={`flex flex-col sm:flex-row items-start gap-6 sm:gap-10 group relative pb-12 lg:pb-16 border-b border-clinic-stone/40 last:border-0 ${
+                  idx % 2 !== 0 ? 'sm:ml-12 lg:ml-24' : ''
+                }`}
               >
-                {/* Index watermark */}
-                <div className="font-serif text-[4rem] leading-none text-clinic-stone/30 absolute top-5 right-7 transition-colors duration-500 group-hover:text-clinic-sage/15">
-                  {service.index}
+                <div className="text-clinic-sage/30 font-serif text-5xl md:text-6xl font-light leading-none group-hover:text-clinic-sage transition-colors duration-500">
+                  {service.num}
                 </div>
-
-                {/* Icon */}
-                <div className="w-12 h-12 rounded-xl bg-clinic-sage/8 flex items-center justify-center mb-6 transition-colors duration-500 group-hover:bg-clinic-sage/15">
-                  <Icon className="w-6 h-6 text-clinic-sage stroke-[1.4]" />
+                <div className="flex-1 mt-1 sm:mt-2">
+                  <h3 className="font-serif text-xl md:text-2xl text-clinic-dark mb-4 group-hover:translate-x-2 transition-transform duration-500 ease-[0.16,1,0.3,1]">
+                    {service.title}
+                  </h3>
+                  <p className="text-clinic-muted text-sm leading-[1.8] font-light max-w-md">
+                    {service.desc}
+                  </p>
                 </div>
-
-                {/* Content */}
-                <h3 className="font-serif text-xl text-clinic-dark mb-3 relative z-10 tracking-tight">
-                  {service.title}
-                </h3>
-                <p className="text-clinic-muted text-[0.85rem] leading-[1.75] body-refined relative z-10">
-                  {service.description}
-                </p>
               </motion.div>
-            );
-          })}
-        </motion.div>
+            ))}
+          </div>
+          
+        </div>
       </div>
     </section>
   );

@@ -11,97 +11,135 @@ const cases = [
     duration: '24 тижні',
     imgBefore: '/acne-before.jpg',
     imgAfter: '/acne-after.jpg',
+    featured: true,
   },
   {
     title: 'Мелазма та гіперпігментація',
     description:
-      'Таргетна депігментаційна терапія з використанням транексамової кислоти медичного класу, модифікованої формули Клігмана та суворої фотопротекції. Видиме покращення задокументовано на 16-му тижні.',
+      'Таргетна депігментаційна терапія з використанням транексамової кислоти. Видиме покращення на 16-му тижні.',
     duration: '16 тижнів',
     imgBefore: '/melasma-before.jpg',
     imgAfter: '/melasma-after.jpg',
+    featured: false,
   },
   {
     title: 'Постзапальне рубцювання',
     description:
-      'Мультимодальний підхід, що поєднує фракційний мікронідлінг, PRP-терапію та силіконовий менеджмент рубців. Прогресивне покращення текстури шкіри протягом 12 сеансів.',
+      'Мультимодальний підхід: мікронідлінг та PRP-терапія. Прогресивне покращення текстури.',
     duration: '12 сеансів',
     imgBefore: '/scars-before.jpg',
     imgAfter: '/scars-after.jpg',
+    featured: false,
   },
 ];
 
 export default function BeforeAfter() {
+  const featuredCase = cases.find(c => c.featured);
+  const secondaryCases = cases.filter(c => !c.featured);
+
   return (
-    <section id="results" className="py-24 lg:py-32 bg-clinic-bg scroll-mt-32">
+    <section id="results" className="py-24 lg:py-36 bg-white scroll-mt-32 border-y border-clinic-stone">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="text-center mb-16">
+        
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }}
           >
-            <span className="uppercase tracking-[0.15em] text-[0.65rem] font-medium text-clinic-sage font-sans">
+            <span className="uppercase tracking-[0.2em] text-[0.65rem] font-medium text-clinic-sage font-sans mb-4 block">
               Клінічні результати
             </span>
-            <h2 className="font-serif text-3xl md:text-4xl text-clinic-dark mt-4 tracking-tight">
-              Задокументовані результати лікування
+            <h2 className="font-serif text-3xl md:text-4xl text-clinic-dark tracking-tight">
+              Задокументований прогрес
             </h2>
-            <p className="text-clinic-muted text-sm mt-3 italic">
-              Демонстраційні клінічні випадки. Індивідуальні результати можуть відрізнятися.
-            </p>
           </motion.div>
+          <motion.p
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 1, delay: 0.2 }}
+            className="text-clinic-muted text-xs uppercase tracking-[0.1em] max-w-[200px] text-right hidden md:block"
+          >
+            Демонстраційні випадки.<br/>Результати індивідуальні.
+          </motion.p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6">
-          {cases.map((c, idx) => (
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          
+          {/* Featured Case */}
+          {featuredCase && (
             <motion.div
-              key={idx}
-              initial={{ opacity: 0, y: 24 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: idx * 0.1 }}
-              className="bg-white border border-clinic-stone/70 rounded-2xl overflow-hidden group hover:shadow-[0_8px_40px_-12px_rgba(142,155,140,0.18)] hover:border-clinic-sage/30 transition-all duration-500 flex flex-col"
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] as const }}
+              className="lg:col-span-7 flex flex-col group"
             >
-              <div className="flex w-full">
-                <div className="w-1/2 relative aspect-[3/4] border-r border-clinic-stone/50 overflow-hidden">
-                  <Image 
-                    src={c.imgBefore}
-                    alt={`${c.title} - До`}
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-2 py-0.5 rounded-md shadow-sm">
-                    <span className="uppercase tracking-[0.2em] text-[10px] font-medium text-clinic-dark">До</span>
-                  </div>
+              <div className="flex w-full aspect-[4/3] md:aspect-[16/9] lg:aspect-[4/3] bg-clinic-bg mb-6 relative overflow-hidden">
+                <div className="w-1/2 relative border-r border-white/20">
+                  <Image src={featuredCase.imgBefore} alt="До" fill className="object-cover group-hover:scale-105 transition-transform duration-1000" />
+                  <span className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 text-[10px] uppercase tracking-[0.2em] font-medium text-clinic-dark">До</span>
                 </div>
-                <div className="w-1/2 relative aspect-[3/4] overflow-hidden">
-                  <Image 
-                    src={c.imgAfter}
-                    alt={`${c.title} - Після`}
-                    fill
-                    className="object-cover"
-                  />
-                  <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-0.5 rounded-md shadow-sm">
-                    <span className="uppercase tracking-[0.2em] text-[10px] font-medium text-clinic-dark">Після</span>
-                  </div>
+                <div className="w-1/2 relative">
+                  <Image src={featuredCase.imgAfter} alt="Після" fill className="object-cover group-hover:scale-105 transition-transform duration-1000" />
+                  <span className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 text-[10px] uppercase tracking-[0.2em] font-medium text-clinic-dark">Після</span>
                 </div>
               </div>
-
-              <div className="p-6 lg:p-7 flex flex-col flex-grow">
-                <h3 className="font-serif text-lg text-clinic-dark mb-2 tracking-tight">{c.title}</h3>
-                <p className="text-clinic-muted text-[0.8rem] leading-[1.7] flex-grow mb-4">
-                  {c.description}
-                </p>
-                <div className="mt-auto">
-                  <span className="inline-flex items-center px-3.5 py-1.5 bg-clinic-bg text-clinic-dark text-[0.7rem] rounded-lg border border-clinic-stone/60 font-medium tracking-wide">
-                    Тривалість: {c.duration}
-                  </span>
+              <div className="flex flex-col md:flex-row md:items-start justify-between gap-4">
+                <div className="max-w-md">
+                  <h3 className="font-serif text-2xl text-clinic-dark mb-3">{featuredCase.title}</h3>
+                  <p className="text-clinic-muted text-sm leading-[1.7] font-light">
+                    {featuredCase.description}
+                  </p>
                 </div>
+                <span className="shrink-0 text-clinic-sage font-serif italic text-lg border-b border-clinic-sage/30 pb-1">
+                  {featuredCase.duration}
+                </span>
               </div>
             </motion.div>
-          ))}
+          )}
+
+          {/* Secondary Cases */}
+          <div className="lg:col-span-5 flex flex-col gap-12 pt-4 lg:pt-0">
+            {secondaryCases.map((c, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-50px' }}
+                transition={{ duration: 0.9, delay: 0.15 + (idx * 0.1), ease: [0.16, 1, 0.3, 1] as const }}
+                className="flex flex-col group"
+              >
+                <div className="flex w-full aspect-[2/1] bg-clinic-bg mb-5 relative overflow-hidden">
+                  <div className="w-1/2 relative border-r border-white/20">
+                    <Image src={c.imgBefore} alt="До" fill className="object-cover group-hover:scale-105 transition-transform duration-1000" />
+                    <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-2 py-0.5 text-[9px] uppercase tracking-[0.2em] font-medium text-clinic-dark">До</span>
+                  </div>
+                  <div className="w-1/2 relative">
+                    <Image src={c.imgAfter} alt="Після" fill className="object-cover group-hover:scale-105 transition-transform duration-1000" />
+                    <span className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-0.5 text-[9px] uppercase tracking-[0.2em] font-medium text-clinic-dark">Після</span>
+                  </div>
+                </div>
+                <div className="flex items-baseline justify-between mb-2">
+                  <h3 className="font-serif text-lg text-clinic-dark">{c.title}</h3>
+                  <span className="text-clinic-sage text-xs tracking-wide">{c.duration}</span>
+                </div>
+                <p className="text-clinic-muted text-xs leading-[1.6] font-light max-w-sm">
+                  {c.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+
         </div>
+        
+        {/* Mobile Disclaimer */}
+        <p className="text-clinic-muted text-[0.65rem] uppercase tracking-[0.1em] text-center mt-12 md:hidden">
+          Демонстраційні випадки. Результати індивідуальні.
+        </p>
       </div>
     </section>
   );

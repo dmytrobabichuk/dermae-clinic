@@ -90,20 +90,26 @@ export default function Hero() {
             досвіду з передовими технологіями для розробки точних, індивідуальних протоколів.
           </motion.p>
 
-          <motion.div variants={itemVariants} className="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-6">
-            <a
-              href="#contact"
-              className="group inline-flex items-center justify-center gap-3 bg-clinic-dark text-white px-8 py-4 text-[0.75rem] tracking-[0.1em] uppercase font-medium hover:bg-clinic-sage transition-all duration-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinic-sage focus-visible:ring-offset-2 relative [clip-path:polygon(0_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%)] hover:shadow-[0_8px_32px_rgba(142,155,140,0.25)]"
-            >
-              <span className="relative z-10 flex items-center gap-3">
-                Записатись на прийом
-                <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" />
-              </span>
-              <div className="absolute top-0 right-0 w-[16px] h-[16px] bg-white/10 [clip-path:polygon(100%_0,100%_100%,0_100%)] group-hover:bg-white/20 transition-colors" />
-            </a>
+          <motion.div variants={itemVariants} className="mt-12 flex flex-col sm:flex-row items-start sm:items-center gap-8">
+            {/* Primary CTA with Glow */}
+            <div className="relative group">
+              <div className="absolute -inset-3 bg-[#8E9B8C]/20 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-700 -z-10" />
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center gap-3 bg-clinic-dark text-white px-8 py-4 text-[0.75rem] tracking-[0.1em] uppercase font-medium hover:bg-clinic-sage transition-all duration-500 relative [clip-path:polygon(0_0,100%_0,100%_calc(100%-12px),calc(100%-12px)_100%,0_100%)]"
+              >
+                <span className="relative z-10 flex items-center gap-3">
+                  Записатись на прийом
+                  <ArrowRight className="w-4 h-4 transition-transform duration-500 group-hover:translate-x-1" />
+                </span>
+                <div className="absolute top-0 right-0 w-[16px] h-[16px] bg-white/10 [clip-path:polygon(100%_0,100%_100%,0_100%)] group-hover:bg-white/20 transition-colors" />
+              </a>
+            </div>
+
+            {/* Secondary CTA with Dashed Underline */}
             <a
               href="#services"
-              className="inline-flex items-center gap-1.5 text-clinic-dark text-[0.75rem] tracking-[0.05em] uppercase font-medium hover:text-clinic-sage transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinic-sage focus-visible:ring-offset-2 px-2 py-1 rounded-sm"
+              className="inline-flex items-center text-clinic-dark text-[0.75rem] tracking-[0.05em] uppercase font-medium hover:text-clinic-sage transition-all duration-300 border-b border-dashed border-clinic-dark/30 hover:border-clinic-sage pb-1"
             >
               Наші послуги
             </a>

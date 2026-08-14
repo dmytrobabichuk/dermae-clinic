@@ -25,7 +25,10 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section id="reviews" className="bg-clinic-bg py-24 lg:py-36 scroll-mt-32">
+    <section id="reviews" className="bg-clinic-bg py-24 lg:py-36 scroll-mt-32 relative z-0 overflow-hidden">
+      {/* ─── Abstract Background ─── */}
+      <div className="absolute top-0 right-0 w-[40vw] h-[40vw] bg-[#E5E2DA]/20 [clip-path:polygon(100%_0,100%_100%,0_0)] -z-10 pointer-events-none" />
+      <div className="absolute bottom-[10%] left-[10%] w-[30vw] h-[30vw] rounded-full bg-[#8E9B8C]/5 blur-[90px] -z-10 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         
         <motion.div

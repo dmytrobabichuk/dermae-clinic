@@ -12,7 +12,10 @@ const metadata = [
 
 export default function DoctorProfile() {
   return (
-    <section id="doctor" className="bg-clinic-bg border-y border-clinic-stone scroll-mt-32">
+    <section id="doctor" className="bg-clinic-bg border-y border-clinic-stone scroll-mt-32 relative z-0 overflow-hidden">
+      {/* ─── Ambient Glow Background ─── */}
+      <div className="absolute top-[10%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-[#8E9B8C]/5 blur-[120px] -z-10 pointer-events-none" />
+      <div className="absolute bottom-[-10%] left-[-5%] w-[40vw] h-[40vw] rounded-full bg-[#E5E2DA]/30 blur-[100px] -z-10 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-24 lg:py-36">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center lg:items-start">
 

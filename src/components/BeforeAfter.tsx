@@ -38,7 +38,10 @@ export default function BeforeAfter() {
   const secondaryCases = cases.filter(c => !c.featured);
 
   return (
-    <section id="results" className="py-24 lg:py-36 bg-white scroll-mt-32 border-y border-clinic-stone">
+    <section id="results" className="py-24 lg:py-36 bg-white scroll-mt-32 border-y border-clinic-stone relative z-0 overflow-hidden">
+      {/* ─── Geometric Background ─── */}
+      <div className="absolute top-[20%] left-[-10%] w-[30vw] h-[60vh] bg-[#E5E2DA]/30 -rotate-12 -z-10 pointer-events-none" />
+      <div className="absolute bottom-[5%] right-0 w-[20vw] h-[40vh] bg-[#8E9B8C]/5 [clip-path:polygon(100%_0,100%_100%,0_100%)] -z-10 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         
         {/* Header */}

@@ -1,4 +1,5 @@
 import { Phone, Send, MessageCircle, Smartphone, MapPin, Mail, Clock } from 'lucide-react';
+import Logo from '@/components/Logo';
 
 const footerNavLinks = [
   { name: 'Про клініку', href: '#about' },
@@ -18,10 +19,7 @@ export default function Footer() {
           {/* ─── Column 1: Clinic Identity ─── */}
           <div className="lg:col-span-1 flex flex-col">
             <div className="mb-6">
-              <div className="font-serif text-xl text-white tracking-[0.04em]">DERMAÉ</div>
-              <div className="text-[0.55rem] tracking-[0.25em] font-medium uppercase text-white/30 mt-0.5">
-                Clinic
-              </div>
+              <Logo variant="light" />
             </div>
             <p className="text-[0.8rem] text-white/40 leading-relaxed mb-6">
               Приватна дерматологічна клініка з фокусом на доказову діагностику та індивідуальні протоколи лікування.

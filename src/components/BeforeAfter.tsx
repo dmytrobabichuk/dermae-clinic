@@ -114,7 +114,9 @@ export default function BeforeAfter() {
                 transition={{ duration: 0.9, delay: 0.15 + (idx * 0.1), ease: [0.16, 1, 0.3, 1] as const }}
                 className="flex flex-col group"
               >
-                <div className="flex w-full aspect-[2/1] bg-clinic-bg mb-5 relative overflow-hidden">
+                <div className="flex w-full aspect-[2/1] bg-clinic-bg mb-5 relative overflow-hidden border border-[#171918]/10 [clip-path:polygon(0_0,calc(100%-16px)_0,100%_16px,100%_100%,0_100%)]">
+                  {/* Chamfer accent */}
+                  <div className="absolute top-0 right-0 w-[16px] h-[16px] bg-clinic-stone/30 [clip-path:polygon(100%_0,100%_100%,0_100%)] z-10 pointer-events-none" />
                   <div className="w-1/2 relative border-r border-white/20">
                     <Image src={c.imgBefore} alt="До" fill className="object-cover group-hover:scale-105 transition-transform duration-1000" />
                     <span className="absolute top-3 left-3 bg-white/90 backdrop-blur-sm px-2 py-0.5 text-[9px] uppercase tracking-[0.2em] font-medium text-clinic-dark">До</span>

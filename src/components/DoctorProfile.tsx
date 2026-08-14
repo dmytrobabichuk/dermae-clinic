@@ -24,7 +24,9 @@ export default function DoctorProfile() {
             transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] as const }}
             className="w-full lg:w-[45%] shrink-0"
           >
-            <div className="relative aspect-[4/5] w-full mx-auto max-w-md lg:max-w-none overflow-hidden">
+            <div className="relative aspect-[4/5] w-full mx-auto max-w-md lg:max-w-none overflow-hidden [clip-path:polygon(0_0,calc(100%-32px)_0,100%_32px,100%_100%,0_100%)]">
+              {/* 45° chamfer accent */}
+              <div className="absolute top-0 right-0 w-[32px] h-[32px] bg-[#8E9B8C]/20 [clip-path:polygon(100%_0,100%_100%,0_100%)] z-10 pointer-events-none" />
               <Image
                 src="/doctor-portrait.jpg"
                 alt="Доктор Олександр Мілер — Медичний директор"

@@ -111,8 +111,10 @@ export default function Hero() {
         >
           <motion.div 
             variants={imageWrapVariants}
-            className="relative w-[90%] sm:w-[80%] lg:w-full aspect-[3/4] overflow-hidden"
+            className="relative w-[90%] sm:w-[80%] lg:w-full aspect-[3/4] overflow-hidden [clip-path:polygon(0_0,calc(100%-28px)_0,100%_28px,100%_100%,0_100%)]"
           >
+            {/* 45° accent corner detail */}
+            <div className="absolute top-0 right-0 w-[28px] h-[28px] bg-clinic-sage/20 [clip-path:polygon(100%_0,100%_100%,0_100%)] z-10 pointer-events-none" />
             <motion.div variants={imageScaleVariants} className="w-full h-full relative">
               <Image
                 src="/doctor-portrait.jpg"

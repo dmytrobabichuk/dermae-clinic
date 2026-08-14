@@ -51,7 +51,7 @@ export default function Testimonials() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.9, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] as const }}
-              className="flex flex-col items-center text-center relative"
+              className="flex flex-col items-center text-center relative transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(23,25,24,0.04)] p-6"
             >
               {/* Elegant Quotation Mark */}
               <div className="text-clinic-stone font-serif text-7xl leading-none absolute -top-8 -z-10 select-none">

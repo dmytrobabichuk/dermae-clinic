@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import Link from 'next/link';
+import Logo from '@/components/Logo';
 
 const navLinks = [
   { name: 'Про клініку', href: '#about' },
@@ -69,14 +70,10 @@ export default function Navbar() {
             {/* Logo */}
             <Link 
               href="/" 
-              className="flex flex-col items-start group shrink-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinic-sage focus-visible:ring-offset-4 rounded-sm relative z-50"
+              aria-label="DERMAÉ Clinic Головна"
+              className="focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-clinic-sage focus-visible:ring-offset-4 rounded-sm relative z-50"
             >
-              <span className="font-serif text-[1.4rem] tracking-[0.04em] text-clinic-dark leading-none transition-colors duration-300 group-hover:text-clinic-sage">
-                DERMAÉ
-              </span>
-              <span className="font-sans text-[0.5rem] tracking-[0.25em] text-clinic-muted mt-0.5 uppercase">
-                Clinic
-              </span>
+              <Logo variant="dark" />
             </Link>
 
             {/* Desktop Nav Links */}

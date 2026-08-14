@@ -4,6 +4,7 @@ import TrustBar from "@/components/TrustBar";
 import Services from "@/components/Services";
 import DoctorProfile from "@/components/DoctorProfile";
 import Philosophy from "@/components/Philosophy";
+import SectionDivider from "@/components/SectionDivider";
 import BeforeAfter from "@/components/BeforeAfter";
 import Testimonials from "@/components/Testimonials";
 import AppointmentCTA from "@/components/AppointmentCTA";
@@ -17,6 +18,7 @@ export default function Home() {
         <Hero />
         <TrustBar />
         <Philosophy />
+        <SectionDivider />
         <Services />
         <DoctorProfile />
         <BeforeAfter />

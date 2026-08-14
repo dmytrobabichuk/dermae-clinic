@@ -63,7 +63,7 @@ export default function Services() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '-50px' }}
                 transition={{ duration: 0.9, delay: idx * 0.15, ease: [0.16, 1, 0.3, 1] as const }}
-                className={`flex flex-col sm:flex-row items-start gap-6 sm:gap-10 group relative pb-12 lg:pb-16 border-b border-clinic-stone/40 last:border-0 ${
+                className={`flex flex-col sm:flex-row items-start gap-6 sm:gap-10 group relative pb-12 lg:pb-16 border-b border-clinic-stone/40 last:border-0 transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_16px_48px_rgba(23,25,24,0.04)] ${
                   idx % 2 !== 0 ? 'sm:ml-12 lg:ml-24' : ''
                 }`}
               >
